@@ -1,17 +1,33 @@
 const UserCard = ({ user }) => {
   const { firstName, lastName, photoUrl, age, gender, about } = user;
   return (
-    <div className="card bg-base-300 w-96 shadow-xl">
-      <figure>
-        <img src={user.photoUrl} alt="photo" />
+    <div className="card bg-base-300 w-96 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-base-200">
+      <figure className="relative pt-4 px-4 w-full h-80 overflow-hidden">
+        <img
+          src={photoUrl || "https://vectorified.com/images/no-profile-picture-icon-24.jpg"}
+          alt="photo"
+          className="rounded-xl w-full h-full object-cover"
+        />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{firstName + " " + (lastName || "")}</h2>
-        {age && gender && <p>{age + ", " + gender}</p>}
-        <p>{about}</p>
-        <div className="card-actions justify-center my-4">
-          <button className="btn btn-primary mr-10">Ignore</button>
-          <button className="btn btn-secondary ml-10">Interested</button>
+        <h2 className="card-title text-2xl font-bold">
+          {firstName} {lastName !== "" && lastName}
+        </h2>
+        {age && gender && (
+          <p className="text-sm font-semibold text-base-content/70">
+            {age}, <span className="capitalize">{gender}</span>
+          </p>
+        )}
+        <p className="text-base-content/80 text-sm mt-2 line-clamp-3 leading-relaxed min-h-[4rem]">
+          {about}
+        </p>
+        <div className="card-actions justify-center my-4 w-full flex-nowrap gap-4">
+          <button className="btn btn-outline btn-error hover:bg-error hover:text-white rounded-full flex-1">
+            Ignore
+          </button>
+          <button className="btn btn-outline btn-success hover:bg-success hover:text-white rounded-full flex-1">
+            Interested
+          </button>
         </div>
       </div>
     </div>
