@@ -28,7 +28,7 @@ const Feed = () => {
     feed && (
       <div className="flex justify-center my-10">
         {feed[0] ? (
-          <UserCard user={feed[0]} />
+          <UserCard user={feed[0]} isView={false} />
         ) : (
           <h1 className="text-xl font-bold">No new users found!</h1>
         )}

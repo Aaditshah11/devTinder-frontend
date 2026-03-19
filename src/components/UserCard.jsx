@@ -3,7 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeFeed } from "../utils/feedSlice";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, isView }) => {
   const dispatch = useDispatch();
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
 
@@ -41,10 +41,10 @@ const UserCard = ({ user }) => {
           {about}
         </p>
         <div className="card-actions justify-center my-4 w-full flex-nowrap gap-4">
-          <button className="btn btn-outline btn-error hover:bg-error hover:text-white rounded-full flex-1" onClick={() => handleSendRequest("ignored", user._id)} >
+          <button className="btn btn-outline btn-error hover:bg-error hover:text-white rounded-full flex-1" onClick={() => handleSendRequest("ignored", user._id)} disabled={isView} >
             Ignore
           </button>
-          <button className="btn btn-outline btn-success hover:bg-success hover:text-white rounded-full flex-1" onClick={() => handleSendRequest("interested", user._id)}>
+          <button className="btn btn-outline btn-success hover:bg-success hover:text-white rounded-full flex-1" onClick={() => handleSendRequest("interested", user._id)} disabled={isView}>
             Interested
           </button>
         </div>
