@@ -3,7 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/conectionSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
@@ -99,9 +99,11 @@ const Connections = () => {
                 </p>
               </div>
               <div className="mt-4 sm:mt-0 sm:ml-4 flex items-center justify-center shrink-0 w-full sm:w-auto self-center">
+                <Link to={`/chat/${_id}`}>
                 <button className="btn btn-primary rounded-full px-6 shadow-md hover:shadow-lg w-full sm:w-auto">
                   Message
                 </button>
+                </Link>
               </div>
             </div>
           );
