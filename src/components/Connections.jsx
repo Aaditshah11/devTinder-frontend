@@ -9,6 +9,7 @@ const Connections = () => {
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const fetchConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
@@ -70,16 +71,21 @@ const Connections = () => {
                 <img
                   alt={`${firstName}'s photo`}
                   className="w-24 h-24 sm:w-20 sm:h-20 rounded-full object-cover border-4 border-base-100 group-hover:border-primary/50 transition-colors duration-300 shadow-sm"
-                  src={photoUrl || "https://vectorified.com/images/no-profile-picture-icon-24.jpg"}
+                  src={
+                    photoUrl ||
+                    "https://vectorified.com/images/no-profile-picture-icon-24.jpg"
+                  }
                 />
               </div>
               <div className="text-center sm:text-left sm:ml-6 flex-1">
                 <h2 className="font-bold text-2xl sm:text-xl text-base-content mb-1 group-hover:text-primary transition-colors">
-                  {firstName} 
+                  {firstName}
                 </h2>
-                {lastName !== "" && <h2 className="font-bold text-2xl sm:text-xl text-base-content mb-1 group-hover:text-primary transition-colors">
-                  {lastName} 
-                </h2>}
+                {lastName !== "" && (
+                  <h2 className="font-bold text-2xl sm:text-xl text-base-content mb-1 group-hover:text-primary transition-colors">
+                    {lastName}
+                  </h2>
+                )}
                 {(age || gender) && (
                   <div className="flex items-center justify-center sm:justify-start gap-2 text-sm text-base-content/70 font-medium mb-3">
                     {age && (
@@ -100,9 +106,9 @@ const Connections = () => {
               </div>
               <div className="mt-4 sm:mt-0 sm:ml-4 flex items-center justify-center shrink-0 w-full sm:w-auto self-center">
                 <Link to={`/chat/${_id}`}>
-                <button className="btn btn-primary rounded-full px-6 shadow-md hover:shadow-lg w-full sm:w-auto">
-                  Message
-                </button>
+                  <button className="btn btn-primary rounded-full px-6 shadow-md hover:shadow-lg w-full sm:w-auto">
+                    Message
+                  </button>
                 </Link>
               </div>
             </div>
